@@ -14,6 +14,6 @@ typedef void (^InstagramMediaSearchCompletionBlock)(NSArray *results, NSError *e
 
 @interface InstagramAPI : NSObject
 
-+ (void) mediaSearch:(GeoLocation *)location completionBlock:(InstagramMediaSearchCompletionBlock)completionBlock;
++ (void) mediaSearch:(NSString *)tag completionBlock:(InstagramMediaSearchCompletionBlock)completionBlock;
 
 @end

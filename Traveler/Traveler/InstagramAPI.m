@@ -9,17 +9,20 @@
 #import "InstagramAPI.h"
 #import "GeoLocation.h"
 #import "InstagramPhoto.h"
+#import "AppDelegate.h"
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
-
-static const NSString *kClientID = @"21bd08d618fc4f16a2aace1b22fe2895";
-static const NSString *kClientSecret = @"6ed5fe76a6ec49739e5ab7cc7b984f25";
 
 @implementation InstagramAPI
 
-+ (void) mediaSearch:(GeoLocation *)location completionBlock:(InstagramMediaSearchCompletionBlock)completionBlock
++ (void) mediaSearch:(NSString *)tag completionBlock:(InstagramMediaSearchCompletionBlock)completionBlock
 {
-  //NSString *searchURL = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/search?lat=%f&lng=%f&distance=5000", location.lat, location.lng];
-  NSString *searchURL = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/nyc/media/recent?client_id=%@", kClientID];
+  AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+  
+  //NSString *searchURL = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/search?lat=%f&lng=%f&distance=5000&access_token=%@", location.lat, location.lng, appDelegate.instagram.accessToken];
+  
+  NSString *searchURL = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?access_token=%@", tag, appDelegate.instagram.accessToken];
+  
+  // TODO: CHECK FOR IG OAUTH ERROR
   
   AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
   [manager GET:searchURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {

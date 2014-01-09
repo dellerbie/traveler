@@ -25,6 +25,9 @@
 		CEFCD41A187DE34700DCD68B /* InstagramAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCD419187DE34700DCD68B /* InstagramAPI.m */; };
 		CEFCD41D187DE4C000DCD68B /* GeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCD41C187DE4C000DCD68B /* GeoLocation.m */; };
 		CEFCD421187DECA900DCD68B /* InstagramPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCD420187DECA900DCD68B /* InstagramPhotoCell.m */; };
+		CEFCD42A187F399C00DCD68B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCD429187F399C00DCD68B /* LoginViewController.m */; };
+		CEFCD432187F39EE00DCD68B /* IGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCD42F187F39EE00DCD68B /* IGRequest.m */; };
+		CEFCD433187F39EE00DCD68B /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFCD431187F39EE00DCD68B /* Instagram.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,13 @@
 		CEFCD41F187DECA900DCD68B /* InstagramPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramPhotoCell.h; sourceTree = "<group>"; };
 		CEFCD420187DECA900DCD68B /* InstagramPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramPhotoCell.m; sourceTree = "<group>"; };
 		CEFCD426187E10AA00DCD68B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		CEFCD428187F399C00DCD68B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		CEFCD429187F399C00DCD68B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		CEFCD42D187F39EE00DCD68B /* IGConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGConnect.h; sourceTree = "<group>"; };
+		CEFCD42E187F39EE00DCD68B /* IGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRequest.h; sourceTree = "<group>"; };
+		CEFCD42F187F39EE00DCD68B /* IGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRequest.m; sourceTree = "<group>"; };
+		CEFCD430187F39EE00DCD68B /* Instagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instagram.h; sourceTree = "<group>"; };
+		CEFCD431187F39EE00DCD68B /* Instagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instagram.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +140,7 @@
 		CEFCD3E7187DD8D900DCD68B /* Traveler */ = {
 			isa = PBXGroup;
 			children = (
+				CEFCD42B187F39CF00DCD68B /* Vendor */,
 				CEFCD41E187DEC8500DCD68B /* View */,
 				CEFCD414187DE00D00DCD68B /* Model */,
 				CEFCD410187DDC3800DCD68B /* Controller */,
@@ -175,6 +186,8 @@
 			children = (
 				CEFCD411187DDCB900DCD68B /* ImagesViewController.h */,
 				CEFCD412187DDCB900DCD68B /* ImagesViewController.m */,
+				CEFCD428187F399C00DCD68B /* LoginViewController.h */,
+				CEFCD429187F399C00DCD68B /* LoginViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -199,6 +212,26 @@
 				CEFCD420187DECA900DCD68B /* InstagramPhotoCell.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		CEFCD42B187F39CF00DCD68B /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				CEFCD42C187F39EE00DCD68B /* instagram-ios-sdk */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		CEFCD42C187F39EE00DCD68B /* instagram-ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				CEFCD42D187F39EE00DCD68B /* IGConnect.h */,
+				CEFCD42E187F39EE00DCD68B /* IGRequest.h */,
+				CEFCD42F187F39EE00DCD68B /* IGRequest.m */,
+				CEFCD430187F39EE00DCD68B /* Instagram.h */,
+				CEFCD431187F39EE00DCD68B /* Instagram.m */,
+			);
+			path = "instagram-ios-sdk";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,9 +367,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFCD433187F39EE00DCD68B /* Instagram.m in Sources */,
+				CEFCD42A187F399C00DCD68B /* LoginViewController.m in Sources */,
 				CEFCD41D187DE4C000DCD68B /* GeoLocation.m in Sources */,
 				CEFCD3F2187DD8D900DCD68B /* AppDelegate.m in Sources */,
 				CEFCD41A187DE34700DCD68B /* InstagramAPI.m in Sources */,
+				CEFCD432187F39EE00DCD68B /* IGRequest.m in Sources */,
 				CEFCD413187DDCB900DCD68B /* ImagesViewController.m in Sources */,
 				CEFCD3EE187DD8D900DCD68B /* main.m in Sources */,
 				CEFCD417187DE02300DCD68B /* InstagramPhoto.m in Sources */,

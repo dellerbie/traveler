@@ -20,3 +20,6 @@
 
 #define THREE_INCH_HEIGHT(height) ceilf((height / 640.0) * 480)
 #define THREE_INCH_WIDTH(width) ceilf((width / 960.0) * 320)
+
+static NSString *const IG_CLIENT_ID = @"21bd08d618fc4f16a2aace1b22fe2895";
+static NSString *const IG_CLIENT_SECRET = @"6ed5fe76a6ec49739e5ab7cc7b984f25";
