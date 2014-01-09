@@ -16,9 +16,7 @@
 static NSString *CellIdentifier = @"CellIdentifier";
 
 @interface ImagesViewController ()
-
 @property (nonatomic, strong) NSArray *searchResults;
-
 @end
 
 @implementation ImagesViewController
@@ -35,17 +33,27 @@ static NSString *CellIdentifier = @"CellIdentifier";
   self.collectionView.backgroundColor = [UIColor whiteColor];
   [self.view addSubview:self.collectionView];
   
-//  GeoLocation *location = [GeoLocation new];
-//  location.lat = 16.4944;
-//  location.lng = 151.7364;
+  self.searchResults = @[];
   
-  self.searchResults = [NSArray new];
+  self.title = @"NYC";
+  
+  UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
+  self.navigationItem.rightBarButtonItem = refreshButton;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  
+  [self loadData];
+}
+
+- (void) refresh:(id)sender
+{
+  [self loadData];
+}
+
+- (void) loadData
+{
   [InstagramAPI mediaSearch:nil completionBlock:^(NSArray *results, NSError *error) {
     if(error == nil)
     {
@@ -77,8 +85,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  InstagramPhotoCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-  cell.backgroundColor = [UIColor redColor];
+  InstagramPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
   cell.photo = [self.searchResults objectAtIndex:indexPath.row];
   
   return cell;

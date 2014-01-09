@@ -19,11 +19,10 @@ static const NSString *kClientSecret = @"6ed5fe76a6ec49739e5ab7cc7b984f25";
 + (void) mediaSearch:(GeoLocation *)location completionBlock:(InstagramMediaSearchCompletionBlock)completionBlock
 {
   //NSString *searchURL = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/search?lat=%f&lng=%f&distance=5000", location.lat, location.lng];
-  NSString *searchURL = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/popular?client_id=%@", kClientID];
+  NSString *searchURL = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/nyc/media/recent?client_id=%@", kClientID];
   
   AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
   [manager GET:searchURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//    NSLog(@"JSON: %@", responseObject);
     NSArray *searchResults = responseObject[@"data"];
     NSMutableArray *photos = [NSMutableArray new];
     for(NSDictionary *data in searchResults)
@@ -39,7 +38,6 @@ static const NSString *kClientSecret = @"6ed5fe76a6ec49739e5ab7cc7b984f25";
     }
     completionBlock(photos, nil);
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    NSLog(@"Error: %@", error);
     completionBlock(nil, error);
   }];
 }

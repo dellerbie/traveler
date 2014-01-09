@@ -16,7 +16,7 @@
   self = [super initWithFrame:frame];
   if(self)
   {
-    self.imageView = [[UIImageView alloc] initWithFrame:frame];
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
     [self addSubview:self.imageView];
   }
   return self;
@@ -28,8 +28,6 @@
   {
     _photo = photo;
   }
-  
-  NSLog(@"setPhoto: %@", photo.thumbImageURL);
   
   [self.imageView setImageWithURL:photo.thumbImageURL];
 }
